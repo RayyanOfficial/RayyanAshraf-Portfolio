@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevPortfolio | Dark Sunset</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#1A0F0A', // Deep Brown/Black
+                            800: '#2B170F', // Lighter Brown
+                            700: '#0F0F12', // Obsidian
+                        },
+                        sunset: {
+                            100: '#E6C17A', // Highlights
+                            400: '#FFB703', // Orange/Yellow
+                            500: '#FF8C32', // Primary
+                            600: '#F77F00', // Button
+                            700: '#FF9F1C', // Hover
+                        },
+                        text: {
+                            main: '#FFFFFF',
+                            muted: '#F5E9D6',
+                            dim: '#CFCFCF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        script: ['Dancing Script', 'cursive'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('hero.png')",
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-dark-900 text-text-main font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 left-0 right-0">
+        <div class="flex justify-between items-center px-4 sm:px-6 max-w-full">
+            <a href="#" class="text-base sm:text-xl md:text-2xl font-bold tracking-tighter text-sunset-500 whitespace-nowrap">
+                <span class="text-white">Rayyan</span>.Ashraf
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                <a href="#home" class="nav-link text-xs sm:text-sm font-medium hover:text-sunset-400 transition-colors">HOME</a>
+                <a href="#about" class="nav-link text-xs sm:text-sm font-medium hover:text-sunset-400 transition-colors">ABOUT</a>
+                <a href="#skills"
+                    class="nav-link text-xs sm:text-sm font-medium hover:text-sunset-400 transition-colors">SKILLS</a>
+                <a href="#portfolio"
+                    class="nav-link text-xs sm:text-sm font-medium hover:text-sunset-400 transition-colors">PORTFOLIO</a>
+                <a href="#experience"
+                    class="nav-link text-xs sm:text-sm font-medium hover:text-sunset-400 transition-colors">EXPERIENCE</a>
+                <a href="#contact"
+                    class="px-4 sm:px-6 py-2 bg-sunset-600 hover:bg-sunset-700 text-white rounded-full transition-all shadow-lg hover:shadow-sunset-500/30 text-xs sm:text-sm font-bold">CONTACT</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-dark-900/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-white">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="mobile-link text-2xl font-bold hover:text-sunset-500">Home</a>
+        <a href="#about" class="mobile-link text-2xl font-bold hover:text-sunset-500">About</a>
+        <a href="#skills" class="mobile-link text-2xl font-bold hover:text-sunset-500">Skills</a>
+        <a href="#portfolio" class="mobile-link text-2xl font-bold hover:text-sunset-500">Portfolio</a>
+        <a href="#contact" class="mobile-link text-2xl font-bold text-sunset-500">Contact Me</a>
+    </div>
+    <br><br>
+    <!-- Hero Section -->
+    <section id="home" class="relative w-full min-h-screen flex items-center overflow-hidden py-20 px-4 sm:px-6 md:px-0">
+        <!-- Background with Parallax -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/80 to-dark-900/30 z-10"></div>
+            <img src="hero_bg_max.png" alt="Hero Background"
+                class="w-full h-full object-cover object-center parallax-bg opacity-80">
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 relative z-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- Left: Text -->
+                <div class="text-center lg:text-left reveal-left">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 border border-sunset-500/30 rounded-full glass-card mb-8">
+                        <div class="w-2 h-2 bg-sunset-500 rounded-full animate-pulse"></div>
+                        <span class="text-sunset-400 text-sm font-bold tracking-widest uppercase">Available for
+                            Hire</span>
+                    </div>
+
+                    <!-- Responsive Image (Mobile/Tablet Only) -->
+                    <div class="block lg:hidden w-full max-w-xs mx-auto mb-10 reveal-up delay-100">
+                        <div
+                            class="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-dark-800/50 backdrop-blur-sm">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent z-10">
+                            </div>
+                            <img src="image.png" alt="Rayyan Ashraf"
+                                class="w-full h-auto object-cover object-top filter contrast-110 brightness-110">
+                        </div>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight text-white">
+                        Hi, I'm <span class="text-sunset-500">Rayyan Ashraf</span>,
+                    </h1>
+                    <h2 class="text-xl sm:text-3xl md:text-5xl font-bold mb-6 text-white/90">
+                        A <span id="typing-text"
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-sunset-400 to-sunset-600"></span><span
+                            class="cursor-blink text-sunset-500">|</span>
+                    </h2>
+
+                    <p
+                        class="text-text-muted text-base sm:text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed fade-up delay-200">
+                        Crafting modern, responsive, and interactive web experiences.
+                    </p>
+
+
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6">
+                        <a href="#portfolio"
+                            class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-sunset-600 hover:bg-sunset-700 text-white rounded-full transition-all shadow-lg hover:shadow-sunset-500/50 font-bold tracking-wide transform hover:-translate-y-1 glow-btn text-sm sm:text-base">
+                            VIEW WORK
+                        </a>
+                        <a href="#contact"
+                            class="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-white/20 hover:bg-white/10 text-white rounded-full transition-all backdrop-blur-sm font-medium hover:border-sunset-500/50 glow-btn text-sm sm:text-base">
+                            CONTACT ME
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Image -->
+                <div class="relative reveal-right hidden lg:block w-full max-w-none">
+                    <!-- Glow Effect -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-96 sm:h-96 bg-sunset-500/20 rounded-full blur-[100px] pointer-events-none">
+                    </div>
+
+                    <!-- Floating Image Card -->
+                    <div class="relative z-10 w-full max-w-md mx-auto animate-float px-4">
+                        <div
+                            class="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-dark-800/50 backdrop-blur-sm">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent z-10">
+                            </div>
+                            <!-- Using hero-portrait.png (copy of about.png or specific hero image) -->
+                            <img src="image.png" alt="Rayyan Ashraf"
+                                class="w-full h-auto sm:h-[400px] md:h-[500px] object-cover object-top filter contrast-110 brightness-110">
+
+                            <!-- Floating Badge -->
+                            <div class="absolute bottom-6 left-6 right-6 z-20">
+                                <div
+                                    class="glass-card p-4 rounded-xl border-t border-white/20 flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-white font-bold">RayyanOfficial</h4>
+                                        <p class="text-xs text-sunset-400">Full Stack Developer</p>
+                                    </div>
+                                    <div class="text-2xl text-white">
+                                        <i class="fab fa-github"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/50 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 sm:py-20 md:py-24 relative bg-dark-900 px-4 sm:px-6 md:px-0">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 reveal-left">
+                    <h2 class="text-sunset-500 font-script text-3xl mb-2">About Me</h2>
+                    <h3 class="text-4xl font-bold text-white mb-6">Architect of Modern <br>Web Experiences</h3>
+                    <p class="text-text-muted leading-relaxed mb-6">
+                        I am a passionate developer who thrives in the quiet hours of the night. With a coffee in hand
+                        and a city skyline as my backdrop, I turn complex problems into elegant, user-centric solutions.
+                    </p>
+                    <p class="text-text-dim leading-relaxed mb-8">
+                        My philosophy is simple: Code should not only function perfectly but also feel alive. I blend
+                        technical expertise with artistic vision to create websites that leave a lasting impression.
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="glass-card p-4 text-center rounded-xl">
+                            <span class="block text-3xl font-bold text-sunset-400">5+</span>
+                            <span class="text-xs text-text-dim uppercase tracking-wider">Years Exp</span>
+                        </div>
+                        <div class="glass-card p-4 text-center rounded-xl">
+                            <span class="block text-3xl font-bold text-sunset-400">50+</span>
+                            <span class="text-xs text-text-dim uppercase tracking-wider">Projects</span>
+                        </div>
+                        <div class="glass-card p-4 text-center rounded-xl">
+                            <span class="block text-3xl font-bold text-sunset-400">24/7</span>
+                            <span class="text-xs text-text-dim uppercase tracking-wider">Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="order-1 lg:order-2 reveal-right relative group">
+                    <div
+                        class="absolute inset-0 bg-sunset-500 blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 rounded-full">
+                    </div>
+                    <div
+                        class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent z-10"></div>
+                        <img src="about-img.png" alt="Developer at work" class="w-full object-cover">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-dark-800 relative overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-sunset-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-900/10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal-up">
+                <h2 class="text-sunset-500 font-script text-3xl mb-2">My Arsenal</h2>
+                <h3 class="text-4xl font-bold text-white">Technical Skills</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Skill Card 1 -->
+                <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-100">
+                    <i class="fab fa-html5 text-5xl text-gray-500 group-hover:text-orange-500 transition-colors"></i>
+                    <span class="font-bold text-lg">HTML5</span>
+                </div>
+                <!-- Skill Card 2 -->
+                <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-200">
+                    <i class="fab fa-css3-alt text-5xl text-gray-500 group-hover:text-blue-500 transition-colors"></i>
+                    <span class="font-bold text-lg">CSS3</span>
+                </div>
+                <!-- Skill Card 3 -->
+                <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-300">
+                    <i class="fab fa-js text-5xl text-gray-500 group-hover:text-yellow-400 transition-colors"></i>
+                    <span class="font-bold text-lg">JavaScript</span>
+                </div>
+                <!-- Skill Card 4 -->
+                <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-400">
+                    <i class="fab fa-react text-5xl text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+                    <span class="font-bold text-lg">React</span>
+                </div>
+                <!-- Skill Card 5 -->
+                <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-100">
+                    <i class="fab fa-node text-5xl text-gray-500 group-hover:text-green-500 transition-colors"></i>
+                    <span class="font-bold text-lg">Node.js</span>
+                </div>
+                <!-- Skill Card 6 -->
+                <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-200">
+                    <i class="fab fa-git-alt text-5xl text-gray-500 group-hover:text-red-500 transition-colors"></i>
+                    <span class="font-bold text-lg">Git</span>
+                </div>
+                <!-- Skill Card 7 -->
+                <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-300">
+                    <i class="fas fa-database text-5xl text-gray-500 group-hover:text-teal-400 transition-colors"></i>
+                    <span class="font-bold text-lg">Database</span>
+                </div>
+                <!-- Skill Card 8 -->
+                <!-- <div
+                    class="skill-card glass-card p-8 rounded-2xl flex flex-col items-center justify-center gap-4 hover:border-sunset-500/50 transition-all group reveal-up delay-400">
+                    <i class="fas fa-terminal text-5xl text-gray-500 group-hover:text-white transition-colors"></i>
+                    <span class="font-bold text-lg">DevOps</span>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16 sm:py-20 md:py-24 bg-dark-900 px-4 sm:px-6 w-full overflow-hidden">
+        <div class="container mx-auto max-w-full px-4 sm:px-6 md:px-0">
+            <div class="text-center mb-12 sm:mb-16 md:mb-20 reveal-up">
+                <h2 class="text-sunset-500 font-script text-2xl sm:text-3xl mb-2">Recent Works</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Featured Projects</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 w-full">
+                <!-- Project 1 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl reveal-up delay-100 shadow-lg hover:shadow-xl transition-all w-full">
+                    <div
+                        class="absolute inset-0 bg-dark-900/80 md:bg-dark-900/0 md:group-hover:bg-dark-900/90 transition-all duration-300 z-10 flex flex-col justify-center items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 p-4 sm:p-6 text-center">
+                        <h4
+                            class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                            Client Portfolio Website</h4>
+                        <p
+                            class="text-sm sm:text-base text-text-muted mb-4 sm:mb-6 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            A modern client portfolio website showcasing projects, skills, and services with a clean and responsive design.</p>
+                        <a href="https://uzairdev-one.vercel.app/"
+                            class="inline-block px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm border border-sunset-500 text-sunset-500 hover:bg-sunset-500 hover:text-white rounded-full transition-all transform md:translate-y-4 md:group-hover:translate-y-0 duration-300 delay-100">View Details</a>
+                    </div>
+                    <img src="project-1.png" alt="Project 1"
+                        class="w-full h-auto block transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl reveal-up delay-200 shadow-lg hover:shadow-xl transition-all w-full">
+                    <div
+                        class="absolute inset-0 bg-dark-900/80 md:bg-dark-900/0 md:group-hover:bg-dark-900/90 transition-all duration-300 z-10 flex flex-col justify-center items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 p-4 sm:p-6 text-center">
+                        <h4
+                            class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                            Client Portfolio Website</h4>
+                        <p
+                            class="text-sm sm:text-base text-text-muted mb-4 sm:mb-6 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            A personal portfolio website designed to present work, skills, and experience in a professional way.</p>
+                        <a href="https://muhammadarsal.vercel.app/"
+                            class="inline-block px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm border border-sunset-500 text-sunset-500 hover:bg-sunset-500 hover:text-white rounded-full transition-all transform md:translate-y-4 md:group-hover:translate-y-0 duration-300 delay-100">View Details</a>
+                    </div>
+                    <img src="project-2.png" alt="Project 2"
+                        class="w-full h-auto block transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl reveal-up delay-300 shadow-lg hover:shadow-xl transition-all w-full">
+                    <div
+                        class="absolute inset-0 bg-dark-900/80 md:bg-dark-900/0 md:group-hover:bg-dark-900/90 transition-all duration-300 z-10 flex flex-col justify-center items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 p-4 sm:p-6 text-center">
+                        <h4
+                            class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                            Softwere House Website Project</h4>
+                        <p
+                            class="text-sm sm:text-base text-text-muted mb-4 sm:mb-6 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                           A corporate website for a software house, designed to showcase services, projects, and company profile with a modern and professional layout.</p>
+                        <a href="https://aplexpunch.com/"
+                            class="inline-block px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm border border-sunset-500 text-sunset-500 hover:bg-sunset-500 hover:text-white rounded-full transition-all transform md:translate-y-4 md:group-hover:translate-y-0 duration-300 delay-100">View Details</a>
+                    </div>
+                    <img src="Project-3.png" alt="Project 3"
+                        class="w-full h-auto block transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+
+                <!-- Project 4 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl reveal-up delay-400 shadow-lg hover:shadow-xl transition-all w-full">
+                    <div
+                        class="absolute inset-0 bg-dark-900/80 md:bg-dark-900/0 md:group-hover:bg-dark-900/90 transition-all duration-300 z-10 flex flex-col justify-center items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 p-4 sm:p-6 text-center">
+                        <h4
+                            class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                            SMIT Mini Hackathon Website</h4>
+                        <p
+                            class="text-sm sm:text-base text-text-muted mb-4 sm:mb-6 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                           A mini hackathon project created to demonstrate problem-solving and rapid development skills.</p>
+                        <a href="https://minihackathon-sage.vercel.app/"
+                            class="inline-block px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm border border-sunset-500 text-sunset-500 hover:bg-sunset-500 hover:text-white rounded-full transition-all transform md:translate-y-4 md:group-hover:translate-y-0 duration-300 delay-100">View Details</a>
+                    </div>
+                    <img src="project-4.png" alt="Project 4"
+                        class="w-full h-auto block transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+
+                <!-- Project 5 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl reveal-up delay-500 shadow-lg hover:shadow-xl transition-all w-full">
+                    <div
+                        class="absolute inset-0 bg-dark-900/80 md:bg-dark-900/0 md:group-hover:bg-dark-900/90 transition-all duration-300 z-10 flex flex-col justify-center items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 p-4 sm:p-6 text-center">
+                        <h4
+                            class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                            Mini SocialMedia Web & App</h4>
+                        <p
+                            class="text-sm sm:text-base text-text-muted mb-4 sm:mb-6 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            A mini social media web app designed to connect users with posts, profiles, and real-time interaction in a clean UI.</p>
+                        <a href="https://socialweb-zeta.vercel.app/"
+                            class="inline-block px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm border border-sunset-500 text-sunset-500 hover:bg-sunset-500 hover:text-white rounded-full transition-all transform md:translate-y-4 md:group-hover:translate-y-0 duration-300 delay-100">View Details</a>
+                    </div>
+                    <img src="project-5.png" alt="Project 5"
+                        class="w-full h-auto block transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+
+                <!-- Project 6 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl reveal-up delay-600 shadow-lg hover:shadow-xl transition-all w-full">
+                    <div
+                        class="absolute inset-0 bg-dark-900/80 md:bg-dark-900/0 md:group-hover:bg-dark-900/90 transition-all duration-300 z-10 flex flex-col justify-center items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 p-4 sm:p-6 text-center">
+                        <h4
+                            class="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-white transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                            Airband Website Practice</h4>
+                        <p
+                            class="text-sm sm:text-base text-text-muted mb-4 sm:mb-6 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                           A professional website for Airband to showcase internet packages, services, and coverage areas.</p>
+                        <a href="https://airbnbproject-three.vercel.app/"
+                            class="inline-block px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm border border-sunset-500 text-sunset-500 hover:bg-sunset-500 hover:text-white rounded-full transition-all transform md:translate-y-4 md:group-hover:translate-y-0 duration-300 delay-100">View Details</a>
+                    </div>
+                    <img src="project-6.png" alt="Project 6"
+                        class="w-full h-auto block transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+            </div>
+
+            <div class="text-center mt-8 sm:mt-10 md:mt-12">
+                <a href="#"
+                    class="inline-flex items-center text-sunset-500 hover:text-sunset-400 font-bold transition-colors text-sm sm:text-base md:text-lg gap-2 sm:gap-3">
+                    VIEW ALL PROJECTS <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 sm:py-20 md:py-24 bg-dark-800 relative overflow-hidden px-4 sm:px-6 md:px-0 w-full">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-48 h-48 sm:w-96 sm:h-96 bg-sunset-600/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 sm:w-96 sm:h-96 bg-purple-900/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto max-w-full px-4 sm:px-6 md:px-0 relative z-10">
+            <div class="text-center mb-12 sm:mb-16 reveal-up">
+                <h2 class="text-sunset-500 font-script text-2xl sm:text-3xl mb-1">My Journey</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Work Experience</h3>
+            </div>
+
+            <div class="max-w-5xl mx-auto relative">
+                <!-- Timeline Line -->
+                <div
+                    class="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 md:w-0.5 bg-gradient-to-b from-sunset-500 via-sunset-500/50 to-transparent md:transform md:-translate-x-1/2">
+                </div>
+
+                <!-- Experience Item 1 - Senior Front-End Developer -->
+                <div
+                    class="relative z-10 mb-8 sm:mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between w-full reveal-up">
+                    <!-- Left Side - Content -->
+                    <div class="order-2 md:order-1 md:w-5/12 text-left md:text-right px-3 sm:px-4 md:pr-12 mb-4 md:mb-0 flex-1">
+                        <div class="glass-card p-3 sm:p-4 rounded-xl border border-sunset-500/20 hover:border-sunset-500/50 transition-all duration-300 group h-full">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="fas fa-code text-lg sm:text-xl text-sunset-400 group-hover:text-sunset-500 transition-colors"></i>
+                                <span class="inline-block px-2 py-0.5 bg-sunset-500/20 text-sunset-400 text-xs font-bold rounded-full">Senior</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-white mb-0.5">Senior Front-End Developer</h4>
+                            <p class="text-sunset-400 font-medium text-xs sm:text-sm">Tech Solutions Inc.</p>
+                            <p class="text-text-dim text-xs mt-2 leading-relaxed">Leading frontend team, architecting scalable UIs with React & Tailwind CSS.</p>
+                            <div class="flex flex-wrap gap-1 mt-3">
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">React</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">Next.js</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center - Timeline Dot -->
+                    <div class="order-1 md:order-2 md:w-2/12 flex justify-center md:justify-center items-start md:items-center mb-2 md:mb-0 ml-4 md:ml-0">
+                        <div
+                            class="relative w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-sunset-500 to-sunset-600 border-3 md:border-4 border-dark-800 rounded-full flex items-center justify-center shadow-lg shadow-sunset-500/30 hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                            <div class="w-3 h-3 bg-dark-800 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Duration -->
+                    <div class="order-3 md:w-5/12 px-3 sm:px-4 md:pl-12 text-left">
+                        <div class="inline-block w-full md:w-auto">
+                            <span class="text-sunset-500 font-bold text-xs sm:text-sm bg-sunset-500/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-sunset-500/30 block md:inline-block">2023 - Present</span>
+                            <p class="text-text-dim text-xs mt-2">1.6+ Years</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 - Full Stack Developer -->
+                <div
+                    class="relative z-10 mb-8 sm:mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between w-full reveal-up delay-100">
+                    <!-- Left Side - Duration (reversed on desktop) -->
+                    <div class="order-2 md:order-1 md:w-5/12 px-3 sm:px-4 md:pr-12 text-left md:text-right mb-4 md:mb-0 flex-1 md:flex-none">
+                        <span class="text-sunset-500 font-bold text-xs sm:text-sm bg-sunset-500/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-sunset-500/30 block md:inline-block">2021 - 2023</span>
+                    </div>
+
+                    <!-- Center - Timeline Dot -->
+                    <div class="order-1 md:order-2 md:w-2/12 flex justify-center md:justify-center items-start md:items-center mb-4 md:mb-0 ml-4 md:ml-0">
+                        <div
+                            class="relative w-10 h-10 md:w-10 md:h-10 bg-gradient-to-br from-sunset-500 to-sunset-600 border-3 border-dark-800 rounded-full flex items-center justify-center shadow-lg shadow-sunset-500/20 hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                            <i class="fas fa-layer-group text-white text-xs md:text-sm"></i>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Content -->
+                    <div class="order-3 md:order-3 md:w-5/12 px-3 sm:px-4 md:pl-12 text-left flex-1">
+                        <div class="glass-card p-3 sm:p-4 rounded-xl border border-sunset-500/20 hover:border-sunset-500/50 transition-all duration-300 group h-full">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="inline-block px-2 py-0.5 bg-sunset-500/20 text-sunset-400 text-xs font-bold rounded">Mid-Level</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-white mb-0.5">Full Stack Developer</h4>
+                            <p class="text-sunset-400 font-medium text-xs sm:text-sm">Digital Agency</p>
+                            <p class="text-text-dim text-xs mt-2 leading-relaxed">Built 20+ websites with Node.js backend and database management.</p>
+                            <div class="flex flex-wrap gap-1 mt-3">
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">Node.js</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">TypeScript</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 - Junior Developer -->
+                <div
+                    class="relative z-10 mb-8 sm:mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between w-full reveal-up delay-200">
+                    <!-- Left Side - Content -->
+                    <div class="order-2 md:order-1 md:w-5/12 text-left md:text-right px-3 sm:px-4 md:pr-12 mb-4 md:mb-0 flex-1">
+                        <div class="glass-card p-3 sm:p-4 rounded-xl border border-sunset-500/20 hover:border-sunset-500/50 transition-all duration-300 group h-full">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="fas fa-rocket text-lg sm:text-xl text-sunset-400 group-hover:text-sunset-500 transition-colors"></i>
+                                <span class="inline-block px-2 py-0.5 bg-sunset-500/20 text-sunset-400 text-xs font-bold rounded">Entry</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-white mb-0.5">Junior Developer</h4>
+                            <p class="text-sunset-400 font-medium text-xs sm:text-sm">StartUp Hub</p>
+                            <p class="text-text-dim text-xs mt-2 leading-relaxed">MVP development, bug fixing, code reviews & agile training.</p>
+                            <div class="flex flex-wrap gap-1 mt-3">
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">HTML & CSS</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">JavaScript</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">Git</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center - Timeline Dot -->
+                    <div class="order-1 md:order-2 md:w-2/12 flex justify-center md:justify-center items-start md:items-center mb-4 md:mb-0 ml-4 md:ml-0">
+                        <div
+                            class="relative w-10 h-10 md:w-10 md:h-10 bg-gradient-to-br from-sunset-500 to-sunset-600 border-3 border-dark-800 rounded-full flex items-center justify-center shadow-lg shadow-sunset-500/20 hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                            <i class="fas fa-star text-white text-xs md:text-sm"></i>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Duration -->
+                    <div class="order-3 md:w-5/12 px-3 sm:px-4 md:pl-12 text-left">
+                        <span class="text-sunset-500 font-bold text-xs sm:text-sm bg-sunset-500/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-sunset-500/30 block md:inline-block">2020 - 2021</span>
+                    </div>
+                </div>
+
+                <!-- Experience Item 4 - Freelance Web Developer -->
+                <div
+                    class="relative z-10 mb-8 sm:mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between w-full reveal-up delay-300">
+                    <!-- Left Side - Duration (reversed on desktop) -->
+                    <div class="order-2 md:order-1 md:w-5/12 px-3 sm:px-4 md:pr-12 text-left md:text-right mb-4 md:mb-0 flex-1 md:flex-none">
+                        <span class="text-sunset-500 font-bold text-xs sm:text-sm bg-sunset-500/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-sunset-500/30 block md:inline-block">2019 - 2020</span>
+                    </div>
+
+                    <!-- Center - Timeline Dot -->
+                    <div class="order-1 md:order-2 md:w-2/12 flex justify-center md:justify-center items-start md:items-center mb-4 md:mb-0 ml-4 md:ml-0">
+                        <div
+                            class="relative w-10 h-10 md:w-10 md:h-10 bg-gradient-to-br from-sunset-500 to-sunset-600 border-3 border-dark-800 rounded-full flex items-center justify-center shadow-lg shadow-sunset-500/20 hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                            <i class="fas fa-briefcase text-white text-xs md:text-sm"></i>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Content -->
+                    <div class="order-3 md:order-3 md:w-5/12 px-3 sm:px-4 md:pl-12 text-left flex-1">
+                        <div class="glass-card p-3 sm:p-4 rounded-xl border border-sunset-500/20 hover:border-sunset-500/50 transition-all duration-300 group h-full">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="inline-block px-2 py-0.5 bg-sunset-500/20 text-sunset-400 text-xs font-bold rounded">Freelance</span>
+                            </div>
+                            <h4 class="text-base sm:text-lg font-bold text-white mb-0.5">Freelance Web Developer</h4>
+                            <p class="text-sunset-400 font-medium text-xs sm:text-sm">Independent Contractor</p>
+                            <p class="text-text-dim text-xs mt-2 leading-relaxed">Built custom websites for startups. Project management & client communication.</p>
+                            <div class="flex flex-wrap gap-1 mt-3">
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">Coding</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">React</span>
+                                <span class="text-xs bg-dark-800 text-sunset-300 px-1.5 py-0.5 rounded">SEO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 pt-12 border-t border-sunset-500/20">
+                    <div class="glass-card p-4 rounded-xl text-center reveal-up delay-400">
+                        <i class="fas fa-briefcase text-2xl sm:text-3xl text-sunset-400 mb-2"></i>
+                        <p class="text-xl sm:text-2xl font-bold text-white">1.6+</p>
+                        <p class="text-text-muted text-xs">Years Experience</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl text-center reveal-up delay-500">
+                        <i class="fas fa-building text-2xl sm:text-3xl text-sunset-400 mb-2"></i>
+                        <p class="text-xl sm:text-2xl font-bold text-white">5+</p>
+                        <p class="text-text-muted text-xs">Companies Worked With</p>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl text-center reveal-up delay-600">
+                        <i class="fas fa-chart-line text-2xl sm:text-3xl text-sunset-400 mb-2"></i>
+                        <p class="text-xl sm:text-2xl font-bold text-white">30+</p>
+                        <p class="text-text-muted text-xs">Projects Completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 sm:py-20 md:py-24 bg-dark-900 relative overflow-hidden px-4 sm:px-6 md:px-0 w-full">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 right-0 w-48 h-48 sm:w-96 sm:h-96 bg-sunset-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 sm:w-96 sm:h-96 bg-purple-900/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div
+            class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none">
+        </div>
+
+        <div class="container mx-auto max-w-full px-4 sm:px-6 md:px-0 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-12 sm:mb-16 reveal-up">
+                <h2 class="text-sunset-500 font-script text-2xl sm:text-3xl mb-2">Get in Touch</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Let's Work Together</h3>
+                <p class="text-text-muted text-sm sm:text-base max-w-2xl mx-auto">Have a project in mind? I'd love to hear from you. Get in touch and let's create something amazing together.</p>
+            </div>
+
+            <!-- Contact Form Container -->
+            <div class="max-w-3xl mx-auto reveal-up w-full">
+                <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-14 border border-sunset-500/20 shadow-2xl hover:shadow-sunset-500/10 transition-all duration-500 backdrop-blur-xl bg-gradient-to-br from-dark-800/40 to-dark-900/40">
+                    
+                    <form class="space-y-4 sm:space-y-6">
+                        <!-- Name and Email Row -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                            <!-- Name Input -->
+                            <div class="group relative">
+                                <label class="block text-xs sm:text-sm font-semibold text-sunset-400 mb-2 group-focus-within:text-sunset-300 transition-colors">Your Name</label>
+                                <div class="relative">
+                                    <i class="fas fa-user absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-sunset-400/50 group-focus-within:text-sunset-400 transition-colors pointer-events-none text-sm sm:text-base"></i>
+                                    <input type="text" placeholder="Full Name"
+                                        class="w-full bg-dark-800/30 border border-sunset-500/30 rounded-xl sm:rounded-2xl pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-gray-500/70 focus:outline-none focus:border-sunset-400 focus:bg-dark-800/60 transition-all duration-300 hover:border-sunset-500/50 group-focus-within:ring-2 group-focus-within:ring-sunset-500/30">
+                                </div>
+                            </div>
+
+                            <!-- Email Input -->
+                            <div class="group relative">
+                                <label class="block text-xs sm:text-sm font-semibold text-sunset-400 mb-2 group-focus-within:text-sunset-300 transition-colors">Email Address</label>
+                                <div class="relative">
+                                    <i class="fas fa-envelope absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-sunset-400/50 group-focus-within:text-sunset-400 transition-colors pointer-events-none text-sm sm:text-base"></i>
+                                    <input type="email" placeholder="Enter Your Email"
+                                        class="w-full bg-dark-800/30 border border-sunset-500/30 rounded-xl sm:rounded-2xl pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-gray-500/70 focus:outline-none focus:border-sunset-400 focus:bg-dark-800/60 transition-all duration-300 hover:border-sunset-500/50 group-focus-within:ring-2 group-focus-within:ring-sunset-500/30">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subject Input -->
+                        <div class="group relative">
+                            <label class="block text-xs sm:text-sm font-semibold text-sunset-400 mb-2 group-focus-within:text-sunset-300 transition-colors">Project Subject</label>
+                            <div class="relative">
+                                <i class="fas fa-lightbulb absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-sunset-400/50 group-focus-within:text-sunset-400 transition-colors pointer-events-none text-sm sm:text-base"></i>
+                                <input type="text" placeholder="Tell me about your project"
+                                    class="w-full bg-dark-800/30 border border-sunset-500/30 rounded-xl sm:rounded-2xl pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-gray-500/70 focus:outline-none focus:border-sunset-400 focus:bg-dark-800/60 transition-all duration-300 hover:border-sunset-500/50 group-focus-within:ring-2 group-focus-within:ring-sunset-500/30">
+                            </div>
+                        </div>
+
+                        <!-- Message Textarea -->
+                        <div class="group relative">
+                            <label class="block text-xs sm:text-sm font-semibold text-sunset-400 mb-2 group-focus-within:text-sunset-300 transition-colors">Message</label>
+                            <div class="relative">
+                                <i class="fas fa-pen absolute left-3 sm:left-4 top-3 sm:top-4 text-sunset-400/50 group-focus-within:text-sunset-400 transition-colors pointer-events-none text-sm sm:text-base"></i>
+                                <textarea rows="4" placeholder="Share details about your project, requirements, timeline, or any other information..."
+                                    class="w-full bg-dark-800/30 border border-sunset-500/30 rounded-xl sm:rounded-2xl pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-white placeholder-gray-500/70 focus:outline-none focus:border-sunset-400 focus:bg-dark-800/60 transition-all duration-300 hover:border-sunset-500/50 group-focus-within:ring-2 group-focus-within:ring-sunset-500/30 resize-none"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-2 sm:pt-4">
+                            <button type="submit"
+                                class="w-full relative group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-sunset-600 to-sunset-500 text-white font-bold text-sm sm:text-lg rounded-xl sm:rounded-2xl transition-all duration-300 overflow-hidden shadow-lg hover:shadow-sunset-500/50 transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sunset-500/50">
+                                
+                                <!-- Glowing Background Animation -->
+                                <div class="absolute inset-0 bg-gradient-to-r from-sunset-400 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg -z-10"></div>
+                                
+                                <div class="flex items-center justify-center gap-2 sm:gap-3">
+                                    <span>SEND MESSAGE</span>
+                                    <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </div>
+
+                                <!-- Shine Effect -->
+                                <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform -skew-x-12 group-hover:translate-x-full transition-transform duration-500" style="animation: shine 3s infinite;"></div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Contact Info Footer -->
+                        <div class="border-t border-sunset-500/20 pt-4 sm:pt-6 mt-6 sm:mt-8">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+                                <div class="flex items-center gap-2 sm:gap-3 text-center md:text-left contact-info">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sunset-500/20 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-envelope text-xs sm:text-base text-sunset-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-text-dim">Email</p>
+                                        <p class="text-xs sm:text-sm font-semibold text-white">mr.rayyan430@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 sm:gap-3 text-center md:text-left contact-info">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sunset-500/20 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-phone text-xs sm:text-base text-sunset-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-text-dim">Phone</p>
+                                        <p class="text-xs sm:text-sm font-semibold text-white">+92 312 1049430</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 sm:gap-3 text-center md:text-left contact-info">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sunset-500/20 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-map-marker-alt text-xs sm:text-base text-sunset-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-text-dim">Location</p>
+                                        <p class="text-xs sm:text-sm font-semibold text-white">Pakistan, Karachi</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 md:pb-10 footer-glow-top relative z-10 transition-colors duration-500 px-4 sm:px-6 w-full overflow-hidden">
+        <div class="container mx-auto max-w-full px-4 sm:px-6 md:px-0">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 footer-grid">
+
+                <!-- Brand Column -->
+                <div class="reveal-up footer-brand">
+                    <a href="#"
+                        class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tighter text-sunset-500 mb-4 sm:mb-6 block transform hover:scale-105 transition-transform duration-300 inline-block mx-auto md:mx-0">
+                        <span class="text-white">Rayyan</span>.Ashraf
+                    </a>
+                    <p class="text-text-dim text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+                        Crafting modern, cinematic web experiences that merge art with technology.
+                    </p>
+                    <div class="flex space-x-3 sm:space-x-4 justify-center md:justify-start">
+                        <a href="https://github.com/RayyanOfficial"
+                            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-dark-800 flex items-center justify-center text-xs sm:text-base text-white hover:bg-sunset-500 hover:text-white transition-all transform hover:-translate-y-1 hover:shadow-lg hover:shadow-sunset-500/40">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href=""
+                            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-dark-800 flex items-center justify-center text-xs sm:text-base text-white hover:bg-sunset-500 hover:text-white transition-all transform hover:-translate-y-1 hover:shadow-lg hover:shadow-sunset-500/40">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/m_.rayyan22/"
+                            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-dark-800 flex items-center justify-center text-xs sm:text-base text-white hover:bg-sunset-500 hover:text-white transition-all transform hover:-translate-y-1 hover:shadow-lg hover:shadow-sunset-500/40">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/+923121049430"
+                            class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-dark-800 flex items-center justify-center text-xs sm:text-base text-white hover:bg-sunset-500 hover:text-white transition-all transform hover:-translate-y-1 hover:shadow-lg hover:shadow-sunset-500/40">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="reveal-up delay-100">
+                    <h4 class="text-white font-bold">
+                        Quick Links</h4>
+                    <ul class="space-y-2 sm:space-y-4">
+                        <li><a href="#home" class="text-text-dim hover:text-sunset-500 transition-colors"><span></span>Home</a></li>
+                        <li><a href="#about" class="text-text-dim hover:text-sunset-500 transition-colors"><span></span>About Me</a></li>
+                        <li><a href="#portfolio" class="text-text-dim hover:text-sunset-500 transition-colors"><span></span>Portfolio</a></li>
+                        <li><a href="#experience" class="text-text-dim hover:text-sunset-500 transition-colors"><span></span>Experience</a></li>
+                        <li><a href="#contact" class="text-text-dim hover:text-sunset-500 transition-colors"><span></span>Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="reveal-up delay-200">
+                    <h4 class="text-white font-bold">
+                        Services</h4>
+                    <ul class="space-y-2 sm:space-y-4">
+                        <li class="text-text-dim hover:text-sunset-500 transition-colors cursor-pointer hover:translate-x-1 duration-300">Web Development</li>
+                        <li class="text-text-dim hover:text-sunset-500 transition-colors cursor-pointer hover:translate-x-1 duration-300">UI/UX Design</li>
+                        <li class="text-text-dim hover:text-sunset-500 transition-colors cursor-pointer hover:translate-x-1 duration-300">Mobile Apps</li>
+                        <li class="text-text-dim hover:text-sunset-500 transition-colors cursor-pointer hover:translate-x-1 duration-300">SEO Optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="reveal-up delay-300">
+                    <h4 class="text-white font-bold">
+                        Stay Updated</h4>
+                    <p class="text-text-dim mb-3 sm:mb-4 text-xs sm:text-sm">Join the newsletter for the latest updates and tech trends.</p>
+                    <form class="space-y-2 sm:space-y-3">
+                        <input type="email" placeholder="Your Email address" class="w-full bg-dark-800 border border-white/10 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:border-sunset-500 transition-all focus:bg-dark-800/80 placeholder-gray-600">
+                        <button type="submit" class="w-full px-4 sm:px-6 py-2 sm:py-3 bg-sunset-600 hover:bg-sunset-700 text-white rounded-lg transition-all shadow-lg hover:shadow-sunset-500/30 font-bold text-xs sm:text-sm transform hover:-translate-y-1">SUBSCRIBE</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-6 sm:pt-8 reveal-up delay-400 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4">
+                <p class="text-text-dim text-xs sm:text-sm">&copy; 2026 <span class="text-sunset-500">Dark Sunset Developer</span>. All rights reserved.</p>
+                <div class="flex space-x-4 sm:space-x-6 text-xs sm:text-sm flex-wrap justify-center">
+                    <a href="#" class="text-text-dim hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-text-dim hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

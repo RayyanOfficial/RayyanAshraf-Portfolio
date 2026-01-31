@@ -1,0 +1,1534 @@
+/* Global Styles */
+:root {
+    --primary-glow: rgba(255, 140, 50, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+::selection {
+    background: #FF8C32;
+    color: #1A0F0A;
+}
+
+body {
+    background-color: #1A0F0A;
+    color: #FFFFFF;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: #1A0F0A;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2B170F;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF8C32;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nav-glass {
+    background: rgba(26, 15, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animations Base Styles */
+.fade-up,
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    filter: blur(4px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px) scale(0.95);
+    filter: blur(4px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px) scale(0.95);
+    filter: blur(4px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active State for Animations (Added via JS) */
+.active {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+    filter: blur(0);
+}
+
+/* Delays */
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.delay-500 {
+    transition-delay: 0.5s;
+}
+
+/* Parallax Background */
+.parallax-bg {
+    will-change: transform;
+    transform: scale(1.1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Start slightly zoomed for parallax room */
+}
+
+/* Text Gradient Utilities that Tailwind sometimes misses or for specific layering */
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #FFB703, #FF8C32);
+}
+
+/* Glowing Button Effect */
+.glow-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+    transform: scale(0);
+    transition: transform 0.6s ease-out;
+    opacity: 0;
+}
+
+.glow-btn:hover::after {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Float Animation */
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@media (max-width: 768px) {
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Cursor Blink */
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.cursor-blink {
+    animation: blink 1s step-end infinite;
+    font-weight: 100;
+}
+
+/* Skill Card Hover Glow */
+.skill-card:hover {
+    box-shadow: 0 0 25px rgba(255, 140, 50, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+}
+
+/* Nav Link Underline Animation */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #FF8C32;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Responsive Container Constraints */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100% !important;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+/* Ensure Images are Responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fix for background images on mobile */
+@media (max-width: 768px) {
+    .parallax-bg {
+        transform: scale(1) !important;
+    }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+    h1 {
+        font-size: clamp(1.875rem, 5vw, 3.5rem);
+    }
+    h2 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    h3 {
+        font-size: clamp(1.25rem, 3.5vw, 2rem);
+    }
+    h4 {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+    p {
+        font-size: clamp(0.875rem, 2.5vw, 1rem);
+    }
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Footer Top Glow */
+.footer-glow-top {
+    position: relative;
+}
+
+.footer-glow-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 140, 50, 0.5), transparent);
+}
+
+/* Footer Base Styles */
+footer {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+footer .container {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Footer Grid Styles */
+.footer-grid {
+    width: 100%;
+}
+
+/* Footer Brand Column */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-brand a {
+    display: inline-block;
+    width: fit-content;
+}
+
+/* Footer Section Headings */
+footer h4 {
+    font-size: clamp(0.875rem, 3vw, 1.125rem);
+    position: relative;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Underline for h4 - will be repositioned in media queries */
+footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    height: 3px;
+    width: 40px;
+    background: #FF8C32;
+    border-radius: 2px;
+}
+
+/* Footer Lists */
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    margin: 0.5rem 0;
+}
+
+footer li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    transition: all 0.3s ease;
+}
+
+/* Animated line before links */
+footer li a span {
+    display: inline-block;
+    min-width: 0;
+    height: 2px;
+    background: #FF8C32;
+    margin-right: 0;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+footer li a:hover span {
+    min-width: 6px;
+    margin-right: 0.5rem;
+}
+
+/* Services List Items */
+footer .delay-200 ul li {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    transition: all 0.3s ease;
+}
+
+/* Newsletter Form */
+footer form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+footer input[type="email"],
+footer button[type="submit"] {
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    width: 100%;
+}
+
+/* Footer Bottom Section */
+footer > .container > div:last-child {
+    text-align: center;
+    font-size: clamp(0.65rem, 2vw, 0.875rem);
+}
+
+/* =====================================================
+   MOBILE STYLES (320px - 640px)
+   ===================================================== */
+@media (max-width: 640px) {
+    footer {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 2rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Center all footer sections */
+    footer .reveal-up {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Center brand column */
+    .footer-brand {
+        align-items: center;
+    }
+
+    .footer-brand a {
+        margin: 0 auto;
+    }
+
+    .footer-brand p {
+        text-align: center;
+    }
+
+    /* Center social icons */
+    .footer-brand .flex {
+        justify-content: center !important;
+    }
+
+    /* Center all footer headings */
+    footer h4 {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Position underline under heading center */
+    footer h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Center all lists */
+    footer ul {
+        text-align: center;
+    }
+
+    footer li {
+        display: flex;
+        justify-content: center;
+    }
+
+    footer li a {
+        justify-content: center;
+    }
+
+    footer li a span {
+        order: 2;
+        margin-left: 0.5rem;
+        margin-right: 0;
+    }
+
+    footer li a:hover span {
+        margin-left: 0.5rem;
+        margin-right: 0;
+    }
+
+    /* Services list centered */
+    footer .delay-200 ul li {
+        text-align: center;
+    }
+
+    /* Newsletter form full width */
+    footer .delay-300 {
+        width: 100%;
+    }
+
+    footer .delay-300 form {
+        width: 100%;
+    }
+
+    footer .delay-300 p {
+        text-align: center;
+    }
+
+    /* Footer bottom section */
+    footer > .container > div:last-child {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    footer > .container > div:last-child p,
+    footer > .container > div:last-child div {
+        width: 100%;
+    }
+}
+
+/* =====================================================
+   TABLET STYLES (641px - 1023px)
+   ===================================================== */
+@media (min-width: 641px) and (max-width: 1023px) {
+    footer {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-top: 2.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Center content on tablet */
+    footer .reveal-up {
+        text-align: center;
+    }
+
+    .footer-brand {
+        align-items: center;
+        grid-column: 1 / -1;
+    }
+
+    .footer-brand a {
+        margin: 0 auto;
+    }
+
+    .footer-brand .flex {
+        justify-content: center !important;
+    }
+
+    /* Center headings */
+    footer h4 {
+        text-align: center;
+        display: block;
+        margin: 0 auto 1rem;
+    }
+
+    footer h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Center lists */
+    footer ul {
+        text-align: center;
+    }
+
+    footer li {
+        display: flex;
+        justify-content: center;
+    }
+
+    footer li a {
+        justify-content: center;
+    }
+
+    footer li a span {
+        order: 2;
+        margin-left: 0.5rem;
+        margin-right: 0;
+    }
+
+    /* Services centered */
+    footer .delay-200 ul li {
+        text-align: center;
+    }
+
+    /* Newsletter centered */
+    footer .delay-300 {
+        grid-column: 1 / -1;
+    }
+
+    footer .delay-300 p {
+        text-align: center;
+    }
+
+    footer .delay-300 form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Footer bottom */
+    footer > .container > div:last-child {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* =====================================================
+   DESKTOP STYLES (1024px and above)
+   ===================================================== */
+@media (min-width: 1024px) {
+    footer {
+        padding-left: auto !important;
+        padding-right: auto !important;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    /* Left-align on desktop */
+    footer .reveal-up {
+        text-align: left;
+    }
+
+    .footer-brand {
+        align-items: flex-start;
+    }
+
+    .footer-brand a {
+        margin: 0;
+    }
+
+    .footer-brand .flex {
+        justify-content: flex-start !important;
+    }
+
+    /* Left-align headings on desktop */
+    footer h4 {
+        text-align: left;
+    }
+
+    footer h4::after {
+        left: 0;
+        transform: none;
+    }
+
+    /* Left-align lists */
+    footer ul {
+        text-align: left;
+    }
+
+    footer li {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    footer li a {
+        justify-content: flex-start;
+    }
+
+    footer li a span {
+        order: 1;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    footer li a:hover span {
+        margin-right: 0.5rem;
+        margin-left: 0;
+    }
+
+    /* Services left-aligned */
+    footer .delay-200 ul li {
+        text-align: left;
+    }
+
+    /* Newsletter normal width on desktop */
+    footer .delay-300 form {
+        width: 100%;
+    }
+
+    /* Footer bottom - proper layout */
+    footer > .container > div:last-child {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+}
+
+
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobile-menu.open {
+    transform: translateX(0);
+}
+
+/* Work Experience Section - Responsive Styles */
+
+/* Mobile-first approach for Work Experience */
+#experience {
+    overflow-x: hidden;
+}
+
+#experience .glass-card {
+    transition: all 0.3s ease;
+}
+
+/* Mobile (320px - 640px) */
+@media (max-width: 640px) {
+    #experience {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Timeline line positioning */
+    #experience .absolute.left-0.md\:left-1\/2 {
+        left: 0 !important;
+        width: 1.5px !important;
+    }
+
+    /* Experience items - stack vertically on mobile */
+    #experience .flex.flex-col.md\:flex-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Adjust widths for mobile */
+    #experience .md\:w-5\/12 {
+        width: 100% !important;
+    }
+
+    #experience .md\:w-2\/12 {
+        width: auto !important;
+    }
+
+    /* Card padding and sizing */
+    #experience .glass-card {
+        padding: 0.75rem !important;
+    }
+
+    /* Text sizes for mobile */
+    #experience h4 {
+        font-size: 0.875rem;
+        word-break: break-word;
+    }
+
+    #experience > .max-w-5xl > .relative > div p.text-sunset-400 {
+        font-size: 0.75rem;
+    }
+
+    #experience .text-xs {
+        font-size: 0.625rem !important;
+    }
+
+    #experience .gap-2 {
+        gap: 0.35rem !important;
+    }
+
+    /* Timeline dot positioning on mobile */
+    #experience .flex.justify-center.md\:justify-center.items-start.md\:items-center {
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        position: absolute;
+        left: -1.5rem;
+        top: 0;
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Timeline dot sizes for mobile */
+    #experience .w-10.h-10.md\:w-12.md\:h-12 {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    #experience .w-10.h-10 {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    /* Icon sizing in dots */
+    #experience .text-xs.md\:text-sm {
+        font-size: 0.625rem !important;
+    }
+
+    /* Duration badges - full width on mobile */
+    #experience .rounded-full.border.border-sunset-500\/30 {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Spacing between items */
+    #experience .mb-10 {
+        margin-bottom: 2.5rem !important;
+        padding-left: 2rem;
+    }
+
+    #experience .mb-8 {
+        margin-bottom: 2rem !important;
+    }
+
+    /* Flex layout adjustments */
+    #experience .order-2.md\:order-1 {
+        order: 2 !important;
+        margin-left: 0 !important;
+    }
+
+    #experience .order-1.md\:order-2 {
+        order: 1 !important;
+    }
+
+    #experience .order-3.md\:order-3 {
+        order: 3 !important;
+    }
+
+    #experience .flex.items-center.gap-2 {
+        gap: 0.25rem !important;
+        flex-wrap: wrap;
+    }
+
+    /* Remove text-align-right on mobile */
+    #experience .text-left.md\:text-right {
+        text-align: left !important;
+    }
+
+    /* Badge/tag styles */
+    #experience .flex.flex-wrap.gap-1 {
+        gap: 0.25rem !important;
+    }
+
+    /* Container and section constraints */
+    #experience .container.mx-auto.max-w-full {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    #experience .px-4.sm\:px-6.md\:px-0 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+    #experience .glass-card {
+        padding: 0.6rem !important;
+    }
+
+    #experience h4 {
+        font-size: 0.8rem;
+    }
+
+    #experience .text-xs {
+        font-size: 0.55rem !important;
+    }
+
+    #experience .mb-8,
+    #experience .mb-10 {
+        margin-bottom: 2rem !important;
+    }
+}
+
+/* Tablet (641px - 1023px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+    #experience {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    /* Timeline line width adjustment for tablet */
+    #experience .absolute.left-0.md\:left-1\/2 {
+        left: 50% !important;
+        width: 2px !important;
+        transform: translateX(-50%);
+    }
+
+    /* Card padding for tablet */
+    #experience .glass-card {
+        padding: 0.875rem !important;
+    }
+
+    /* Font scaling for tablet */
+    #experience h4 {
+        font-size: 0.95rem;
+    }
+
+    #experience p.text-sunset-400 {
+        font-size: 0.8125rem;
+    }
+
+    /* Timeline dot sizes for tablet */
+    #experience .w-10.h-10 {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+    }
+
+    /* Experience items positioning for tablet */
+    #experience .md\:w-5\/12 {
+        width: 46% !important;
+    }
+
+    #experience .md\:w-2\/12 {
+        width: 8% !important;
+    }
+
+    /* Proper ordering on tablet */
+    #experience .order-2.md\:order-1 {
+        order: 1 !important;
+    }
+
+    #experience .order-1.md\:order-2 {
+        order: 2 !important;
+    }
+
+    #experience .order-3.md\:order-3 {
+        order: 3 !important;
+    }
+
+    /* Dot positioning for tablet timeline */
+    #experience .flex.justify-center.md\:justify-center {
+        justify-content: center !important;
+        position: relative !important;
+        left: auto !important;
+        margin-bottom: 0 !important;
+    }
+
+    #experience .flex.justify-center.md\:justify-center.items-start.md\:items-center {
+        align-items: center !important;
+    }
+
+    /* Padding adjustments for tablet */
+    #experience .px-3.sm\:px-4.md\:pr-12 {
+        padding-right: 1.5rem;
+    }
+
+    #experience .px-3.sm\:px-4.md\:pl-12 {
+        padding-left: 1.5rem;
+    }
+}
+
+/* Desktop (1024px and above) */
+@media (min-width: 1024px) {
+    #experience .absolute.left-0.md\:left-1\/2 {
+        left: 50% !important;
+        width: 2px !important;
+    }
+
+    #experience .flex.justify-center.md\:justify-center.items-start.md\:items-center {
+        justify-content: center !important;
+        align-items: center !important;
+        position: relative !important;
+        left: auto !important;
+        margin-left: 0 !important;
+    }
+
+    #experience .glass-card:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 10px 30px rgba(255, 140, 50, 0.15) !important;
+    }
+
+    #experience .mb-8.sm\:mb-10 {
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* Extra large screens (1280px and above) */
+@media (min-width: 1280px) {
+    #experience .container {
+        max-width: 90% !important;
+    }
+
+    #experience .max-w-5xl {
+        max-width: 100% !important;
+    }
+}
+
+/* =====================================================
+   CONTACT FORM RESPONSIVE STYLES
+   ===================================================== */
+
+/* Shine Animation */
+@keyframes shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Contact Section Base Styles */
+#contact {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#contact .container {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Contact Form Glass Card - Premium Styling */
+#contact .glass-card {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(43, 23, 15, 0.6) 0%, rgba(15, 15, 18, 0.8) 100%) !important;
+    border: 1px solid rgba(255, 183, 3, 0.15) !important;
+    box-shadow: 0 8px 32px rgba(255, 140, 50, 0.08) !important;
+    transition: all 0.4s ease;
+}
+
+#contact .glass-card:hover {
+    background: linear-gradient(135deg, rgba(43, 23, 15, 0.75) 0%, rgba(15, 15, 18, 0.9) 100%) !important;
+    border-color: rgba(255, 183, 3, 0.25) !important;
+    box-shadow: 0 12px 48px rgba(255, 140, 50, 0.12) !important;
+}
+
+/* Form Grid Layouts */
+#contact .grid {
+    width: 100%;
+}
+
+/* Form Spacing */
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+}
+
+/* Input Group Styling */
+#contact .group {
+    transition: all 0.3s ease;
+}
+
+/* Label Styles - Enhanced */
+#contact label {
+    display: block;
+    font-size: clamp(0.75rem, 2.2vw, 0.95rem);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #FFB703;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+#contact .group:focus-within label {
+    color: #FF9F1C;
+    text-shadow: 0 0 8px rgba(255, 159, 28, 0.3);
+}
+
+/* Input and Textarea Styles - Enhanced */
+#contact input,
+#contact textarea {
+    font-size: clamp(0.8rem, 2.2vw, 1rem);
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(43, 23, 15, 0.4) !important;
+    border: 1.5px solid rgba(255, 140, 50, 0.25) !important;
+    color: #FFFFFF !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+    color: rgba(245, 233, 214, 0.4) !important;
+}
+
+#contact input:hover,
+#contact textarea:hover {
+    border-color: rgba(255, 140, 50, 0.4) !important;
+    background: rgba(43, 23, 15, 0.55) !important;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+    border-color: #FF8C32 !important;
+    background: rgba(43, 23, 15, 0.7) !important;
+    box-shadow: 0 0 0 3px rgba(255, 140, 50, 0.15) !important;
+    outline: none !important;
+}
+
+/* Textarea specific */
+#contact textarea {
+    resize: none;
+    line-height: 1.6;
+}
+
+/* Button Styles - Premium */
+#contact button[type="submit"] {
+    font-size: clamp(0.8rem, 2.2vw, 1.1rem);
+    width: 100%;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    background: linear-gradient(135deg, #FF8C32 0%, #FFB703 100%) !important;
+    border: none !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#contact button[type="submit"]:hover {
+    transform: translateY(-3px) scaleX(1.01);
+    box-shadow: 0 15px 50px rgba(255, 140, 50, 0.35) !important;
+}
+
+#contact button[type="submit"]:active {
+    transform: translateY(-1px) scaleX(0.99);
+}
+
+/* Icon Sizing */
+#contact .fa-user,
+#contact .fa-envelope,
+#contact .fa-lightbulb,
+#contact .fa-pen {
+    font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+    transition: all 0.3s ease;
+}
+
+#contact .group:focus-within .fa-user,
+#contact .group:focus-within .fa-envelope,
+#contact .group:focus-within .fa-lightbulb,
+#contact .group:focus-within .fa-pen {
+    color: #FF9F1C !important;
+    filter: drop-shadow(0 0 6px rgba(255, 159, 28, 0.5));
+}
+
+/* Contact Info Icons */
+#contact .fa-envelope,
+#contact .fa-phone,
+#contact .fa-map-marker-alt {
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+}
+
+/* Contact Info Enhancement */
+#contact .border-t {
+    border-color: rgba(255, 140, 50, 0.15) !important;
+}
+
+#contact .rounded-full {
+    background: linear-gradient(135deg, rgba(255, 140, 50, 0.25) 0%, rgba(255, 183, 3, 0.1) 100%) !important;
+    border: 1px solid rgba(255, 140, 50, 0.2) !important;
+    transition: all 0.3s ease;
+}
+
+#contact .rounded-full:hover {
+    background: linear-gradient(135deg, rgba(255, 140, 50, 0.35) 0%, rgba(255, 183, 3, 0.2) 100%) !important;
+    box-shadow: 0 0 15px rgba(255, 140, 50, 0.2) !important;
+}
+
+/* =====================================================
+   MOBILE CONTACT FORM (320px - 640px)
+   ===================================================== */
+@media (max-width: 640px) {
+    #contact {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    #contact .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Section header spacing */
+    #contact h3 {
+        font-size: clamp(1.5rem, 4.5vw, 2.25rem) !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #contact h2 {
+        font-size: clamp(1.1rem, 3vw, 1.4rem) !important;
+    }
+
+    #contact > .container > .text-center p {
+        font-size: clamp(0.8rem, 2.2vw, 0.95rem) !important;
+        line-height: 1.6;
+    }
+
+    /* Form section margin */
+    #contact .max-w-3xl {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    /* Glass card padding for mobile */
+    #contact .glass-card {
+        padding: 1.5rem !important;
+        border-radius: 1rem !important;
+        gap: 0;
+    }
+
+    /* Form spacing */
+    #contact form {
+        gap: 1.25rem;
+    }
+
+    /* Input group spacing */
+    #contact .group {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Grid spacing */
+    #contact .grid {
+        gap: 1.25rem !important;
+    }
+
+    /* Single column on mobile */
+    #contact .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    #contact .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    /* Input field padding */
+    #contact input,
+    #contact textarea {
+        padding-left: 2.5rem !important;
+        padding-right: 0.875rem !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+        border-radius: 0.75rem !important;
+    }
+
+    /* Label margin */
+    #contact label {
+        margin-bottom: 0.6rem !important;
+    }
+
+    /* Button padding */
+    #contact button[type="submit"] {
+        padding: 0.875rem 1rem !important;
+        margin-top: 0.5rem;
+        border-radius: 0.75rem !important;
+    }
+
+    /* Button text and icon gap */
+    #contact button .flex {
+        gap: 0.5rem !important;
+    }
+
+    /* Contact info section on mobile */
+    #contact .border-t {
+        margin-top: 1.5rem !important;
+        padding-top: 1.25rem !important;
+    }
+
+    /* Contact info items centered on mobile */
+    #contact .contact-info {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Contact info text sizing */
+    #contact .contact-info p {
+        font-size: clamp(0.7rem, 2.2vw, 0.85rem);
+    }
+
+    #contact .contact-info .text-xs.sm\:text-sm {
+        font-size: 0.7rem !important;
+    }
+
+    /* Contact info font weight */
+    #contact .contact-info .font-semibold {
+        font-weight: 600;
+    }
+
+    /* Full width contact info items */
+    #contact .flex.items-center.gap-2.sm\:gap-3.text-center {
+        justify-content: center;
+    }
+
+    /* Icon sizing for contact info */
+    #contact .w-10.h-10.sm\:w-12.sm\:h-12 {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+        flex-shrink: 0;
+        min-width: 2.25rem;
+    }
+}
+
+/* =====================================================
+   TABLET CONTACT FORM (641px - 1023px)
+   ===================================================== */
+@media (min-width: 641px) and (max-width: 1023px) {
+    #contact {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    #contact .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Section header spacing */
+    #contact h3 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+        margin-bottom: 1.25rem !important;
+    }
+
+    #contact h2 {
+        font-size: clamp(1.25rem, 3.5vw, 1.6rem) !important;
+    }
+
+    /* Form container on tablet */
+    #contact .max-w-3xl {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Glass card padding for tablet */
+    #contact .glass-card {
+        padding: 2.25rem !important;
+        border-radius: 1.5rem !important;
+    }
+
+    /* Form spacing */
+    #contact form {
+        gap: 1.75rem;
+    }
+
+    /* Input group spacing */
+    #contact .group {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Grid spacing */
+    #contact .grid {
+        gap: 1.75rem !important;
+    }
+
+    /* Two column on tablet */
+    #contact .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+
+    #contact .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+
+    /* Last contact info item spans full width on tablet */
+    #contact .grid.grid-cols-1.md\:grid-cols-3 > div:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Input field padding */
+    #contact input,
+    #contact textarea {
+        padding-left: 2.75rem !important;
+        padding-right: 1rem !important;
+        padding-top: 0.875rem !important;
+        padding-bottom: 0.875rem !important;
+        border-radius: 0.875rem !important;
+    }
+
+    /* Label margin */
+    #contact label {
+        margin-bottom: 0.7rem !important;
+    }
+
+    /* Button padding */
+    #contact button[type="submit"] {
+        padding: 1rem 1.25rem !important;
+        margin-top: 0.75rem;
+        border-radius: 0.875rem !important;
+    }
+
+    /* Contact info section */
+    #contact .border-t {
+        margin-top: 2rem !important;
+        padding-top: 1.75rem !important;
+    }
+
+    /* Contact info items centered on tablet */
+    #contact .contact-info {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Contact info text sizing */
+    #contact .contact-info p {
+        font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    }
+
+    /* Icon sizing */
+    #contact .w-10.h-10.sm\:w-12.sm\:h-12 {
+        width: 2.75rem !important;
+        height: 2.75rem !important;
+        flex-shrink: 0;
+        min-width: 2.75rem;
+    }
+}
+
+/* =====================================================
+   DESKTOP CONTACT FORM (1024px and above)
+   ===================================================== */
+@media (min-width: 1024px) {
+    #contact {
+        padding-left: auto !important;
+        padding-right: auto !important;
+    }
+
+    #contact .container {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    /* Section header spacing */
+    #contact h3 {
+        font-size: clamp(2rem, 5.5vw, 2.75rem) !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    #contact h2 {
+        font-size: clamp(1.4rem, 4vw, 1.85rem) !important;
+    }
+
+    #contact > .container > .text-center p {
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem) !important;
+        line-height: 1.7;
+    }
+
+    /* Form spacing on desktop */
+    #contact form {
+        gap: 2rem;
+    }
+
+    /* Input group spacing */
+    #contact .group {
+        margin-bottom: 1rem;
+    }
+
+    /* Grid spacing */
+    #contact .grid {
+        gap: 2rem !important;
+    }
+
+    /* Two columns on desktop */
+    #contact .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    /* Three columns on desktop */
+    #contact .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    /* Contact info left-aligned on desktop */
+    #contact .contact-info {
+        text-align: left;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    /* Contact info text */
+    #contact .contact-info p {
+        font-size: clamp(0.9rem, 2.8vw, 1rem);
+    }
+
+    /* Glass card normal padding */
+    #contact .glass-card {
+        padding: 3.5rem !important;
+        border-radius: 2rem !important;
+    }
+
+    /* Input field padding */
+    #contact input,
+    #contact textarea {
+        padding-left: 3.25rem !important;
+        padding-right: 1.25rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        border-radius: 1rem !important;
+    }
+
+    /* Label margin */
+    #contact label {
+        margin-bottom: 0.85rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* Button padding */
+    #contact button[type="submit"] {
+        padding: 1.1rem 1.5rem !important;
+        margin-top: 1rem;
+        border-radius: 1rem !important;
+    }
+
+    /* Contact info section */
+    #contact .border-t {
+        margin-top: 2.5rem !important;
+        padding-top: 2rem !important;
+    }
+
+    /* Icon sizing on desktop */
+    #contact .w-10.h-10.sm\:w-12.sm\:h-12 {
+        width: 3.25rem !important;
+        height: 3.25rem !important;
+        flex-shrink: 0;
+        min-width: 3.25rem;
+    }
+
+    /* Contact info icon sizing */
+    #contact .contact-info .fa-envelope,
+    #contact .contact-info .fa-phone,
+    #contact .contact-info .fa-map-marker-alt {
+        font-size: 1.1rem;
+    }
+}
+
